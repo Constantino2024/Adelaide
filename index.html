@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Adelaide Duas Horas" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="Envelope Especial" />
+    <meta property="og:title" content="Adelaide Duas Horas" />
+    <meta property="og:description" content="Envelope para Adelaide Duas Horas" />
+    <meta property="og:site_name" content="AdelaideHoras"/>
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>Adelaide Horas</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Aperte no Coração</h2>
+      <div class="envelope-wrapper">
+        <div class="envelope">
+          <div class="letter">
+            <div class="text">
+              <strong>Adelaide Duas Horas.</strong>
+              <p>
+                "Feliz dia dos namorados. Te amo"
+              </p>
+              <div class="hearter"></div>
+            </div>
+          </div>
+        </div>
+        <div class="heart"></div>
+      </div>
+    </div>
+    <script>
+      const envelope = document.querySelector(".envelope-wrapper");
+      envelope.addEventListener("click", () => {
+        envelope.classList.toggle("flap");
+      });
+    </script>
+  </body>
+</html>
