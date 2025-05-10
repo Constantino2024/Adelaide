@@ -13,29 +13,108 @@
     <meta property="og:site_name" content="AdelaideHoras"/>
 
     <link rel="stylesheet" href="./style.css" />
-    <title>Adelaide Horas</title>
+    <title>Para o Amor da Minha Vida</title>
   </head>
   <body>
     <div class="container">
-      <h2>Aperte no Coração</h2>
-      <div class="envelope-wrapper">
-        <div class="envelope">
-          <div class="letter">
-            <div class="text">
-              <strong>Feliz Março Mulher!</strong>
-              <p>"Toda mulher Carrega coragem para transformar o mundo."</p>
-              <div class="hearter"></div>
-            </div>
-          </div>
-        </div>
-        <div class="heart"></div>
+      <!-- Corações flutuantes -->
+      <div class="heart" style="top:10%; left:20%;"></div>
+      <div class="heart" style="top:70%; left:80%; animation-delay: 1s;"></div>
+      <div class="heart" style="top:30%; left:70%; animation-delay: 2s;"></div>
+      <div class="heart" style="top:80%; left:30%; animation-delay: 3s;"></div>
+      <div class="heart" style="top:20%; left:50%; animation-delay: 4s;"></div>
+      
+      <!-- Foto principal de vocês (substitua pela URL da sua foto) -->
+      <div class="photo-frame" id="mainPhoto" style="background-image: url('foto6.jpg');"></div>
+      
+      <h1>Para Adelaide Duas Horas</h1>
+      <p id="click">Clique no botão abaixo para ver uma chuva de momentos especiais seus...</p>
+      
+      <button class="btn" id="surpriseBtn">Clique para a chuva de fotos!</button>
+      
+      <div class="hidden-message" id="hiddenMessage">
+          <h2 style="font-family: 'Dancing Script', cursive; color: #c9184a;">Minha Querida,</h2>
+          <p>Eu te amo mais do que todas as estrelas no céu e todas as fotos no mundo.</p>
+          <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-top: 20px;">Para sempre seu ❤️,<br><span id="yourName">[Adelaide Horas]</span></p>
       </div>
-    </div>
-    <script>
-      const envelope = document.querySelector(".envelope-wrapper");
-      envelope.addEventListener("click", () => {
-        envelope.classList.toggle("flap");
-      });
-    </script>
-  </body>
+  </div>
+  
+  <footer>Feito com ❤️ especialmente para você</footer>
+  
+  <script>
+    // Array com as URLs das fotos (substitua pelas suas fotos)
+    const photos = [
+        'foto1.jpg',
+        'foto2.jpg',
+        'foto3.jpg',
+        'foto4.jpg',
+        'foto5.jpg',
+        'foto7.jpg',
+        'foto8.jpg',
+        'foto9.jpg',
+        'foto.png'
+    ];
+    
+    document.getElementById('surpriseBtn').addEventListener('click', function() {
+        this.style.display = 'none';
+        document.getElementById('hiddenMessage').style.display = 'block';
+        document.getElementById('click').style.display = 'none';
+        
+        // Mudar a foto principal para uma foto dela
+        document.getElementById('mainPhoto').style.backgroundImage = "url('foto6.jpg')";
+        
+        // Criar a chuva de fotos
+        createPhotoRain();
+    });
+    
+    function createPhotoRain() {
+        // Quantidade de fotos que vão aparecer
+        const photoCount = 20;
+        
+        for (let i = 0; i < photoCount; i++) {
+            setTimeout(() => {
+                createFallingPhoto();
+                // Adiciona algumas fotos extras com pequenos atrasos para efeito mais denso
+                if (i % 3 === 0) {
+                    setTimeout(createFallingPhoto, 300);
+                }
+            }, i * 400); // Espaçamento entre o aparecimento das fotos
+        }
+        
+        // Continua adicionando fotos periodicamente
+        setInterval(createFallingPhoto, 800);
+    }
+    
+    function createFallingPhoto() {
+        const photo = document.createElement('div');
+        photo.className = 'falling-photo';
+        
+        // Escolhe uma foto aleatória do array
+        const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+        photo.style.backgroundImage = `url('${randomPhoto}')`;
+        
+        // Posição aleatória no topo da tela
+        photo.style.left = Math.random() * (window.innerWidth - 120) + 'px';
+        
+        // Tamanho aleatório
+        const size = Math.random() * 80 + 80;
+        photo.style.width = size + 'px';
+        photo.style.height = size + 'px';
+        
+        // Duração e rotação aleatórias
+        const duration = Math.random() * 5 + 3;
+        photo.style.animationDuration = duration + 's';
+        
+        // Rotação inicial aleatória
+        photo.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+        
+        document.body.appendChild(photo);
+        
+        // Remover após a animação
+        setTimeout(() => {
+            photo.remove();
+        }, duration * 1000);
+    }
+  </script>
+</body>
 </html>
